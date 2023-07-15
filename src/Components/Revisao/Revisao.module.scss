@@ -1,0 +1,31 @@
+@import "./../../Styles/variaveis.module.scss";
+@import "./../../Styles/breakpoints.scss";
+
+.struturaFormInputs {
+  width: 100%;
+
+  .nota{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: solid $cor-quarternaria 1px;
+    margin-bottom: 2vh;
+
+    .resposta{
+      color: $cor-secundaria;
+    }
+
+
+  }
+
+  .struturaCollapse {
+    margin-bottom: 2vh;
+  }
+
+  .icon {
+    color: $cor-terciaria;
+  }
+}

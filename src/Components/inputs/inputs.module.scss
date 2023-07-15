@@ -1,0 +1,34 @@
+@import './../../Styles/variaveis.module.scss';
+
+.struturaFormInputs {
+    
+    .titulo{
+        font-size: 20px !important;
+    }
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    & :focus {
+        border: solid 1px $cor-secundaria ;
+        cursor: pointer;
+
+    }
+
+    select{
+        display: none;
+    }
+    
+    input {
+        background-color: $cor-primaria;
+        font-size: 15px;
+        box-shadow: 0 0 0 0;
+        border: solid 1px $cor-quarternaria ;
+        outline: 0;
+        padding: 15px;
+        border-radius: 10px;
+        color: $cor-terciaria;
+        
+    }
+}

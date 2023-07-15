@@ -1,0 +1,18 @@
+@import './../../Styles/variaveis.module.scss';
+@import './../../Styles/breakpoints.scss';
+
+.stepBox{
+    padding: 2%;
+    
+    .fontesLabel{
+        color: $cor-terciaria;
+        font-weight: 200;
+        font-size: 10px;
+    }
+}
+
+@media (min-width: $tablet){
+    .fontesLabel{
+        font-size: 15px !important;
+    }
+}

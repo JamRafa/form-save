@@ -1,0 +1,13 @@
+@import "./../../Styles/variaveis.module.scss";
+@import "./../../Styles/breakpoints.scss";
+
+.collapseContein {
+  background-color: $cor-secundaria;
+  color: $cor-primaria;
+  word-break: break-word;
+
+  .break {
+    display: flex;
+    flex-direction: column;
+  }
+}

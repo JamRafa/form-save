@@ -1,0 +1,39 @@
+@import './../../Styles/variaveis.module.scss';
+@import './../../Styles/breakpoints.scss';
+
+.titulos {
+    padding: 5% 0% 5% 10%;
+
+    .titulo {
+        font-weight: 700;
+        font-size: 20px;
+
+        b {
+            color: $cor-secundaria;
+        }
+    }
+
+    .subTitulo {
+        font-weight: 200;
+    }
+
+}
+
+@media (min-width: $tablet) {
+
+    .titulos {
+        padding: 2% 0% 2% 5% !important;
+
+        .titulo {
+            font-weight: 700;
+            font-size: 30px !important;
+
+        }
+
+        .subTitulo {
+            font-weight: 200;
+            font-size: 15px !important;
+
+        }
+    }
+}

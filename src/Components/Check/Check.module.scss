@@ -1,0 +1,36 @@
+@import './../../Styles/variaveis.module.scss';
+
+.estrutura{
+    width: 100%;
+
+    .estruturaCheck{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5vh;
+        
+        .checkboxLabel{
+            border: solid $cor-quarternaria 1px;
+            border-radius: 5px;
+            margin: 0;
+            
+            .checkbox{
+                color: $cor-quarternaria;
+            }
+        }
+        
+        .checkboxLabeltrue{
+            border: solid $cor-secundaria 1px;
+            color: $cor-secundaria;
+            border-radius: 5px;
+            margin: 0;
+            
+            .checkbox{
+                color: $cor-secundaria;
+            }
+        }
+        
+    }
+}
+

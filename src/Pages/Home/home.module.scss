@@ -1,0 +1,29 @@
+@import './../../Styles/variaveis.module.scss';
+
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./../../Assests/unsplash_VJ2s0c20qCo\ \(1\).png');
+    height: 100vh;
+    border-radius: 5px;
+    background-size: cover;
+
+    .fundoCard{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70vw;
+        height: 70vh;
+        background-color: $cor-primaria;
+
+    }
+
+    .botaoComecar{
+        color: $cor-terciaria;
+        padding: 15px;
+        width: 50vw;
+        border: solid $cor-secundaria;
+        border-radius: 20px;
+    }
+}

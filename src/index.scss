@@ -1,0 +1,8 @@
+@use '../node_modules/scss-reset/src/scss/_reset.scss';
+@import './Styles/variaveis.module.scss';
+
+body {
+  background-color: $cor-primaria;
+  color: $cor-terciaria;
+  font-family: 'Poppins', sans-serif; 
+}

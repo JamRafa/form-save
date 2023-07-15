@@ -1,0 +1,9 @@
+@import './../../Styles/variaveis.module.scss';
+
+.footer{
+    width: 100%;
+    height: 2%;
+    background-color: $cor-secundaria;
+    display: flex;
+    align-items: flex-end;
+}

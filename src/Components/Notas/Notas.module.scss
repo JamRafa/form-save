@@ -1,0 +1,60 @@
+@import "./../../Styles/variaveis.module.scss";
+@import "./../../Styles/breakpoints.scss";
+
+.estrutura {
+  .estruturaCheck {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5vh;
+    flex-wrap: wrap;
+
+    .checkboxLabel {
+      display: flex;
+      justify-content: center;
+      border: solid $cor-quarternaria 1px;
+      border-radius: 5px;
+      margin: 0;
+      padding: 15px 20px 15px 20px;
+    }
+    .checkboxLabeltrue {
+      display: flex;
+      justify-content: center;
+      border: solid $cor-secundaria 1px;
+      border-radius: 5px;
+      margin: 0;
+      padding: 15px 20px 15px 20px;
+      color: $cor-secundaria;
+    }
+
+    .checkbox {
+      color: $cor-quarternaria;
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+}
+
+@media (min-width: $desktop) {
+  .estrutura {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .estruturaCheck {
+      width: 50%;
+
+      .checkboxLabeltrue {
+        font-size: 20px !important;
+      }
+      .checkboxLabel {
+        font-size: 40px !important;
+
+    }
+    }
+  }
+}
