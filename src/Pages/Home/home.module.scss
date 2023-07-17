@@ -1,29 +1,53 @@
-@import './../../Styles/variaveis.module.scss';
+@import "./../../Styles/variaveis.module.scss";
 
-.home{
+.home {
+  display: flex;
+  align-items: center;
+  background-image: url("./../../Assests/Frame\ 2\ \(2\).png");
+  height: 100vh;
+  border-radius: 5px;
+  background-size: cover;
+
+  .opacity{
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-image: url('./../../Assests/unsplash_VJ2s0c20qCo\ \(1\).png');
-    height: 100vh;
-    border-radius: 5px;
-    background-size: cover;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 
-    .fundoCard{
+  .fundoCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    height: 70%;
+    gap: 3vh;
+  
+
+    .logoContainer {
+    
         display: flex;
-        align-items: center;
         justify-content: center;
-        width: 70vw;
-        height: 70vh;
-        background-color: $cor-primaria;
-
+    
+        .logo {
+          width: 120px;
+        }
     }
 
-    .botaoComecar{
-        color: $cor-terciaria;
-        padding: 15px;
-        width: 50vw;
-        border: solid $cor-secundaria;
-        border-radius: 20px;
+    p{
+        margin-left: 0;
     }
+
+    .botaoComecar {
+      color: $cor-terciaria;
+      padding: 15px;
+      width: 60%;
+      height: 10%;
+      border: solid $cor-secundaria 2px;
+      border-radius: 10px;
+    }
+  }
 }

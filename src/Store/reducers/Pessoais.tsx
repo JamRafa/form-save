@@ -14,8 +14,9 @@ const pessoaisSlice = createSlice({
     cadastraPessoa: (state, { payload }) => {
       return state = payload
     },
+    resetPessoais: () => initialState 
   },
 });
 
-export const { cadastraPessoa } = pessoaisSlice.actions;
+export const { cadastraPessoa, resetPessoais } = pessoaisSlice.actions;
 export default pessoaisSlice.reducer;

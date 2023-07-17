@@ -9,25 +9,28 @@ import { cadastraDesafio } from "../../Store/reducers/Desafio";
 
 export default function Desafio() {
   const dispatch = useDispatch();
-
   const [actualStatate] = useSelector((state: Iredux) => state.desafio);
 
-  console.log(actualStatate, 'a')
-
   const [chalenge, setChalenge] = useState<string>(actualStatate.desafio);
-  const [presencialmente, setPresencialmente] = useState<string>(actualStatate.presencial);
+  const [presencialmente, setPresencialmente] = useState<string>(
+    actualStatate.presencial
+  );
 
+  const isActive =
+    chalenge.length >= 3 && presencialmente.length >= 3 ? true : false;
 
   function Handle(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     const desafioData = [
       {
         desafio: chalenge,
-        presencial: presencialmente
-      }
-    ]
-    dispatch(cadastraDesafio(desafioData))
-    dispatch(mudaEstado());
+        presencial: presencialmente,
+      },
+    ];
+    dispatch(cadastraDesafio(desafioData));
+    if (isActive) {
+      dispatch(mudaEstado());
+    }
   }
 
   return (
@@ -50,7 +53,7 @@ export default function Desafio() {
           onChange={(ev) => setPresencialmente(ev.target.value)}
         />
 
-        <NextButton />
+        <NextButton isActive={isActive} />
       </form>
     </>
   );

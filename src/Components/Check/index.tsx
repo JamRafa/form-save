@@ -15,6 +15,8 @@ export default function Check() {
     return state.estagios;
   });
 
+  const isActive = listaRespostas.some((item) => item.check === true);
+
   function handleChange(position: number, resposta: boolean) {
     let check = !resposta;
     dispatch(cadastraEstagio({ id: position, item: { check } }));
@@ -22,7 +24,9 @@ export default function Check() {
 
   function handleSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
-    dispatch(mudaEstado());
+    if(isActive){
+      dispatch(mudaEstado());
+    }
   }
 
   return (
@@ -49,7 +53,7 @@ export default function Check() {
         ))}
       </div>
 
-      <NextButton />
+      <NextButton isActive={isActive}/>
     </form>
   );
 }

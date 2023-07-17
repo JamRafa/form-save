@@ -1,16 +1,27 @@
-@import './../../Styles/variaveis.module.scss';
-@import './../../Styles/breakpoints.scss';
-
+@import "./../../Styles/variaveis.module.scss";
+@import "./../../Styles/breakpoints.scss";
 
 .botaoContainer {
+  width: 100%;
+  .buttonActive {
+    background-color: $cor-secundaria;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 15px;
     width: 100%;
-    button {
-        background-color: $cor-secundaria;
-        font-weight: 500;
-        font-size: 17px;
-        padding: 15px;
-        width: 100%;
-        border-radius: 4px;
-        margin-top: 30px;
-    }
+    border-radius: 4px;
+    margin-top: 30px;
+    color: $cor-primaria;
+  }
+  .buttonDisabled {
+    background-color: $cor-secundaria;
+    opacity: 0.4;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 15px;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 30px;
+    color: $cor-primaria;
+  }
 }

@@ -13,7 +13,6 @@ import Desafio from "../../Components/Desafio";
 import { useDispatch } from "react-redux";
 import { voltaEstado } from "../../Store/reducers/BotaoClick";
 import Revisao from "../../Components/Revisao";
-import Feito from "../../Components/Feito";
 
 export default function Question() {
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ export default function Question() {
       case 4:
         return <Revisao />;
       case 5:
-        return <Feito/>
+        return <Revisao />;
     }
   }
 
@@ -67,7 +66,7 @@ export default function Question() {
         </div>
 
         <section className={styles.struturaForm}>
-          {actualStatate === 0 || actualStatate === 5 ? (
+          {actualStatate === 0 ? (
             <></>
           ) : (
             <button

@@ -1,7 +1,7 @@
 import styles from "./Revisao.module.scss";
 import NextButton from "../NextButton";
 import { useDispatch } from "react-redux";
-import { mudaEstado } from "../../Store/reducers/BotaoClick";
+import { mudaEstado, resetButton } from "../../Store/reducers/BotaoClick";
 import { useSelector } from "react-redux";
 import { IEstagio, INota, Iredux } from "../../tipos/funcao";
 import GroupsIcon from "@mui/icons-material/Groups";
@@ -14,13 +14,19 @@ import {
   faFaceMeh,
   faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { memo } from "react";
+import { resetDesafio } from "../../Store/reducers/Desafio";
+import { resetEstagio } from "../../Store/reducers/Estagios";
+import { resetPessoais } from "../../Store/reducers/Pessoais";
+import { useNavigate } from "react-router-dom";
+import venomBot from "../../Services/venomBot";
 
-
- function Revisao() {
+function Revisao() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { pessoais, estagios, nota, desafio } = useSelector(
     (state: Iredux) => state
@@ -33,9 +39,39 @@ import { memo } from "react";
   const [notaTrue] = nota.filter((nota: INota) => nota.check === true);
   const [desafios] = desafio;
 
-  function HandleSubmit(ev: React.FormEvent<HTMLFormElement>) {
+  async function HandleSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     dispatch(mudaEstado());
+
+    const estagioUsuario = estagiosTrue.map((esta) => esta.resposta);
+
+    const text = `*Nome:* ${name.name}\n*Nota do usuario:* ${notaTrue.resposta}\n*estagios de sentimento do usuario:*\n${estagioUsuario}\n\n*desafio devida no momento:* ${desafios.desafio}\n\n*porque me encontrar presencialmente:*\n ${desafios.presencial}`;
+
+    await venomBot
+      .post("/send", {
+        number: "+556194218598",
+        message: text,
+      })
+      .then(() => {
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Dados salvos com sucesso",
+          showConfirmButton: false,
+          background: "#222831",
+          color: "#F5F5F5",
+          timer: 2000,
+        }).then(() => {
+          dispatch(resetButton());
+          dispatch(resetDesafio());
+          dispatch(resetEstagio());
+          dispatch(resetPessoais());
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function mood() {
@@ -49,7 +85,6 @@ import { memo } from "react";
       return <FontAwesomeIcon icon={faFaceSmile} bounce size="lg" />;
     }
   }
-
 
   return (
     <>
@@ -107,4 +142,4 @@ import { memo } from "react";
   );
 }
 
-export default memo(Revisao)
+export default memo(Revisao);

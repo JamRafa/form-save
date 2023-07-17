@@ -32,8 +32,9 @@ const notaSlice = createSlice({
       const index = state.findIndex((state) => state.id === payload.id);
       Object.assign(state[index], payload.item);
     },
+    resetNota: () => initialState 
   },
 });
 
-export const { cadastraNota } = notaSlice.actions;
+export const { cadastraNota, resetNota } = notaSlice.actions;
 export default notaSlice.reducer;

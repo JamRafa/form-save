@@ -15,8 +15,9 @@ const desafioSlice = createSlice({
     cadastraDesafio: (state, { payload }) => {
       return (state = payload);
     },
+    resetDesafio: () => initialState 
   },
 });
 
-export const { cadastraDesafio } = desafioSlice.actions;
+export const { cadastraDesafio, resetDesafio } = desafioSlice.actions;
 export default desafioSlice.reducer;

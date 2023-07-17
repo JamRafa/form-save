@@ -18,8 +18,9 @@ const botaoClickSlice = createSlice({
         return state - 1;
       }
     },
+    resetButton: () => initialState 
   },
 });
 
-export const { mudaEstado, voltaEstado } = botaoClickSlice.actions;
+export const { mudaEstado, voltaEstado, resetButton } = botaoClickSlice.actions;
 export default botaoClickSlice.reducer;

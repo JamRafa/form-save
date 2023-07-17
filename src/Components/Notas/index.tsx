@@ -20,6 +20,8 @@ export default function Notas() {
     new Array(listaRespostas.length).fill(false)
   );
 
+  const isActive = listaRespostas.some((item) => item.check === true);
+
   function handleChange(id: number, resposta: boolean) {
     const updatedCheckedState = isChecked.map((item, index) =>
       index === id ? !item : false
@@ -31,7 +33,9 @@ export default function Notas() {
 
   function handleSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
-    dispatch(mudaEstado());
+    if (isActive) {
+      dispatch(mudaEstado());
+    }
   }
 
   return (
@@ -59,7 +63,7 @@ export default function Notas() {
           ))}
         </div>
 
-        <NextButton />
+        <NextButton isActive={isActive} />
       </form>
     </>
   );

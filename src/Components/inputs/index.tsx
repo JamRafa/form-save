@@ -11,15 +11,18 @@ export default function Inputs() {
   const dispatch = useDispatch();
 
   const [actualStatate] = useSelector((state: Iredux) => state.pessoais);
-  console.log(actualStatate);
 
   const [name, setName] = useState<string>(actualStatate.name);
 
   function Handle(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     salva(ev);
-    dispatch(mudaEstado());
+    if (isActive) {
+      dispatch(mudaEstado());
+    }
   }
+
+  const isActive = name.length >= 3 ? true : false;
 
   function salva(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -41,7 +44,7 @@ export default function Inputs() {
           value={name}
           onChange={(ev) => setName(ev.target.value)}
         />
-        <NextButton />
+        <NextButton isActive={isActive} />
       </form>
     </>
   );

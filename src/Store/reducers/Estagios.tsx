@@ -18,8 +18,9 @@ const estagioSlice = createSlice({
         const index = state.findIndex(state => state.id === payload.id)
         Object.assign(state[index], payload.item)
     },
+    resetEstagio: () => initialState 
   },
 });
 
-export const { cadastraEstagio } = estagioSlice.actions;
+export const { cadastraEstagio, resetEstagio } = estagioSlice.actions;
 export default estagioSlice.reducer;
