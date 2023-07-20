@@ -1,9 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./home.module.scss";
 import musculacao from "./../../Assests/musculacao.png";
+import { useSelector } from "react-redux";
+import { Iredux } from "../../tipos/funcao";
 
 export default function Home() {
   const nav = useNavigate();
+
+  const actualStatate = useSelector((state: Iredux) => {
+    return state.botao;
+  });
+
+  const buttonName = actualStatate === 0 ? "Começar" : "Continuar";
+
   return (
     <div className={styles.home}>
       <div className={styles.opacity}>
@@ -15,12 +24,12 @@ export default function Home() {
               alt="imagem de musculacao"
             />
           </div>
-            <p>Clique em comecar para iniciar questionario</p>
+          <p>Clique em comecar para iniciar questionario</p>
           <button
             className={styles.botaoComecar}
             onClick={() => nav("/questions")}
           >
-            começar
+            {buttonName}
           </button>
         </div>
       </div>

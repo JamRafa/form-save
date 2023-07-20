@@ -23,6 +23,7 @@ import { resetEstagio } from "../../Store/reducers/Estagios";
 import { resetPessoais } from "../../Store/reducers/Pessoais";
 import { useNavigate } from "react-router-dom";
 import venomBot from "../../Services/venomBot";
+import { resetNota } from "../../Store/reducers/Nota";
 
 function Revisao() {
   const dispatch = useDispatch();
@@ -47,11 +48,14 @@ function Revisao() {
 
     const text = `*Nome:* ${name.name}\n*Nota do usuario:* ${notaTrue.resposta}\n*estagios de sentimento do usuario:*\n${estagioUsuario}\n\n*desafio devida no momento:* ${desafios.desafio}\n\n*porque me encontrar presencialmente:*\n ${desafios.presencial}`;
 
+    const raw = {
+      token: "9fc3b6r9v0s25t3i",
+      to: "+556194218598",
+      body: text,
+    };
+
     await venomBot
-      .post("/send", {
-        number: "+556194218598",
-        message: text,
-      })
+      .post("/messages/chat", raw)
       .then(() => {
         navigate("/");
         Swal.fire({
@@ -64,8 +68,9 @@ function Revisao() {
           timer: 2000,
         }).then(() => {
           dispatch(resetButton());
-          dispatch(resetDesafio());
           dispatch(resetEstagio());
+          dispatch(resetNota())
+          dispatch(resetDesafio());
           dispatch(resetPessoais());
         });
       })
