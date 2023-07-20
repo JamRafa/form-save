@@ -13,6 +13,7 @@ import {
   faFaceSmile,
   faFaceMeh,
   faIdCard,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
@@ -28,6 +29,7 @@ import { resetNota } from "../../Store/reducers/Nota";
 function Revisao() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let buttonIsValid: boolean = true;
   const [isValid, setIsvalid] = useState<boolean>(false);
 
   const { pessoais, estagios, nota, desafio } = useSelector(
@@ -70,6 +72,13 @@ function Revisao() {
     ev.preventDefault();
     if (isValid) {
       dispatch(mudaEstado());
+      Swal.fire({
+        background: "none",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
 
       await venomBot
         .post("/messages/chat", formatoResposta())
@@ -125,16 +134,21 @@ function Revisao() {
         onSubmit={(ev) => HandleSubmit(ev)}
         className={styles.struturaFormInputs}
       >
-        <div className={styles.input}>
-          <input
-            placeholder="Número de telefone"
-            type="tel"
-            id="phone"
-            name="phone"
-            value={phoneNumber}
-            onChange={(ev) => handleTelefone(ev)}
-            required
-          />
+        <div>
+          <div className={styles.input}>
+            <input
+              placeholder="Ddd + Número de telefone"
+              type="tel"
+              id="phone"
+              name="phone"
+              value={phoneNumber}
+              onChange={(ev) => handleTelefone(ev)}
+              required
+            />
+            <div className={styles.iconPhone}>
+              <FontAwesomeIcon icon={faPhone} shake />
+            </div>
+          </div>
         </div>
         <div className={styles.nota}>
           <div>
@@ -180,7 +194,7 @@ function Revisao() {
           />
         </div>
 
-        <NextButton />
+        <NextButton isActive={buttonIsValid} />
       </form>
     </>
   );
