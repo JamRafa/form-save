@@ -4,7 +4,29 @@
 .struturaFormInputs {
   width: 100%;
 
-  .nota{
+  .input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+    & :focus {
+        border: solid 1px $cor-secundaria ;
+        cursor: pointer;
+
+      }
+      input {
+        background-color: $cor-primaria;
+        font-size: 15px;
+        box-shadow: 0 0 0 0;
+        border: solid 1px $cor-quarternaria;
+        outline: 0;
+        padding: 15px;
+        border-radius: 10px;
+        color: $cor-terciaria;
+      }
+    }
+
+  .nota {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -14,11 +36,9 @@
     border: solid $cor-quarternaria 1px;
     margin-bottom: 2vh;
 
-    .resposta{
+    .resposta {
       color: $cor-secundaria;
     }
-
-
   }
 
   .struturaCollapse {

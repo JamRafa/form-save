@@ -20,7 +20,7 @@ export default function NextButton({ isActive = true }: Button) {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: "Preencha os campos",
+        title: "Preencha os campos corretamente",
         showConfirmButton: false,
         background: "#222831",
         color: "#F5F5F5",
