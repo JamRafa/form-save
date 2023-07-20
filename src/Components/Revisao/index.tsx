@@ -24,7 +24,6 @@ import { resetPessoais } from "../../Store/reducers/Pessoais";
 import { useNavigate } from "react-router-dom";
 import venomBot from "../../Services/venomBot";
 import { resetNota } from "../../Store/reducers/Nota";
-import PhoneInput from "react-phone-number-input";
 
 function Revisao() {
   const dispatch = useDispatch();
@@ -56,7 +55,6 @@ function Revisao() {
 
   function formatoResposta() {
     const estagioUsuario = estagiosTrue.map((esta) => esta.resposta);
-    console.log(phoneNumber);
     const text = `*Nome:* ${name.name}\n*Numero de telefone:* ${phoneNumber}\n\n*Nota do usuario:* ${notaTrue.resposta}\n\n*Estagios de sentimento do usuario:*\n${estagioUsuario}\n\n*Desafio devida no momento:*\n ${desafios.desafio}\n\n*Encontro presencial:*\n ${desafios.presencial}`;
 
     const resposta = {
@@ -70,14 +68,13 @@ function Revisao() {
 
   async function HandleSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
-    console.log(isValid);
     if (isValid) {
       dispatch(mudaEstado());
 
       await venomBot
         .post("/messages/chat", formatoResposta())
         .then(() => {
-          //navigate("/");
+          navigate("/");
           Swal.fire({
             position: "center",
             icon: "success",
@@ -87,11 +84,11 @@ function Revisao() {
             color: "#F5F5F5",
             timer: 2000,
           }).then(() => {
-            // dispatch(resetButton());
-            // dispatch(resetEstagio());
-            // dispatch(resetNota());
-            // dispatch(resetDesafio());
-            // dispatch(resetPessoais());
+            dispatch(resetButton());
+            dispatch(resetEstagio());
+            dispatch(resetNota());
+            dispatch(resetDesafio());
+            dispatch(resetPessoais());
           });
         })
         .catch((error) => {

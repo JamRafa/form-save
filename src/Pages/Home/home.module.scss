@@ -1,4 +1,5 @@
 @import "./../../Styles/variaveis.module.scss";
+@import "./../../Styles/breakpoints.scss";
 
 .home {
   display: flex;
@@ -8,7 +9,7 @@
   border-radius: 5px;
   background-size: cover;
 
-  .opacity{
+  .opacity {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,29 +26,45 @@
     width: 80%;
     height: 70%;
     gap: 3vh;
-  
 
     .logoContainer {
-    
-        display: flex;
-        justify-content: center;
-    
-        .logo {
-          width: 120px;
-        }
+      display: flex;
+      justify-content: center;
+
+      .logo {
+        width: 120px;
+      }
     }
 
-    p{
-        margin-left: 0;
+    p {
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 2vh;
+    }
+    .subTitulo {
+      color: $cor-secundaria;
+      font-weight: 200;
+      font-size: 20px;
     }
 
     .botaoComecar {
       color: $cor-terciaria;
       padding: 15px;
-      width: 60%;
+      width: 100%;
       height: 10%;
       border: solid $cor-secundaria 2px;
       border-radius: 10px;
     }
+  }
+}
+
+@media (min-width: $tablet) {
+  .botaoComecar {
+    width: 60% !important;
+  }
+
+  p{
+    margin-bottom: 0 !important;
   }
 }

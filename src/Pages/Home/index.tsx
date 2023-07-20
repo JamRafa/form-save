@@ -24,7 +24,7 @@ export default function Home() {
               alt="imagem de musculacao"
             />
           </div>
-          <p>Clique em comecar para iniciar questionario</p>
+          <p>Comece a reponder agora mesmo!</p>
           <button
             className={styles.botaoComecar}
             onClick={() => nav("/questions")}
