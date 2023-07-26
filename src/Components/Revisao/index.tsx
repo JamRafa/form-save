@@ -60,8 +60,8 @@ function Revisao() {
     const text = `*Nome:* ${name.name}\n*Numero de telefone:* ${phoneNumber}\n\n*Nota do usuario:* ${notaTrue.resposta}\n\n*Estagios de sentimento do usuario:*\n${estagioUsuario}\n\n*Desafio devida no momento:*\n ${desafios.desafio}\n\n*Encontro presencial:*\n ${desafios.presencial}`;
 
     const resposta = {
-      token: "9fc3b6r9v0s25t3i",
-      to: "+556194218598",
+      token: "5jpmhoraolsf9t44",
+      to: "+5561984074416",
       body: text,
     };
 
@@ -84,6 +84,7 @@ function Revisao() {
         .post("/messages/chat", formatoResposta())
         .then(() => {
           navigate("/");
+          Swal.hideLoading()
           Swal.fire({
             position: "center",
             icon: "success",
@@ -101,9 +102,19 @@ function Revisao() {
           });
         })
         .catch((error) => {
+          Swal.hideLoading()
           console.log(error);
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Nao foi possivel salvar a mensagem tente mais tarde",
+            showConfirmButton: false,
+            background: "#222831",
+            color: "#F5F5F5",
+            timer: 2000,
+          });
         });
-    } else {
+      } else {
       Swal.fire({
         position: "center",
         icon: "error",
